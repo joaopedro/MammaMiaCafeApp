@@ -1,3 +1,4 @@
+import { ContactPage } from './../pages/contact/contact';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -11,7 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ContactPage
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ContactPage
   ],
   providers: [
     StatusBar,

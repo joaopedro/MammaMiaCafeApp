@@ -13,6 +13,6 @@ export class HomePage {
 
   refreshNews(event){
     console.log("Refesh Events on Home page.");
-    
+    event.complete();
   }
 }

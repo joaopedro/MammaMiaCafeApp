@@ -1,3 +1,4 @@
+import { ContactPage } from './../pages/contact/contact';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,7 +22,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'Menu', component: HomePage, icon: 'restaurant' }
+      { title: 'Menu', component: HomePage, icon: 'restaurant' },
+      { title: 'Feedback', component: ContactPage, icon: 'attach' }
     ];
 
   }
