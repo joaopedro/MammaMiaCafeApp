@@ -1,3 +1,4 @@
+import { MenuPage } from './../pages/menu/menu';
 import { ContactPage } from './../pages/contact/contact';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ContactPage
+    ContactPage,
+    MenuPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ContactPage
+    ContactPage,
+    MenuPage
   ],
   providers: [
     StatusBar,
