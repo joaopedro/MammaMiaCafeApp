@@ -1,3 +1,4 @@
+import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
 import { ContactPage } from './../pages/contact/contact';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ContactPage,
-    MenuPage
+    MenuPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ContactPage,
-    MenuPage
+    MenuPage,
+    AboutPage
   ],
   providers: [
     StatusBar,
