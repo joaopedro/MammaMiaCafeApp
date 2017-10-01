@@ -1,3 +1,4 @@
+import { MyOrdersPage } from './../pages/my-orders/my-orders';
 import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
 import { ContactPage } from './../pages/contact/contact';
@@ -17,7 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ContactPage,
     MenuPage,
-    AboutPage
+    AboutPage,
+    MyOrdersPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ContactPage,
     MenuPage,
-    AboutPage
+    AboutPage,
+    MyOrdersPage
   ],
   providers: [
     StatusBar,

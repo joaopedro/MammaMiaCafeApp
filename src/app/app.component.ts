@@ -1,3 +1,4 @@
+import { MyOrdersPage } from './../pages/my-orders/my-orders';
 import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
 import { ContactPage } from './../pages/contact/contact';
@@ -24,6 +25,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'My Orders', component: MyOrdersPage, icon: 'basket' },
       { title: 'Menu', component: MenuPage, icon: 'cafe' },
       { title: 'Feedback', component: ContactPage, icon: 'mail' },
       { title: 'About', component: AboutPage, icon: 'map' }
