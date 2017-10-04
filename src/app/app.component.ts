@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,16 +20,21 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen
+        , public translate: TranslateService) {
     this.initializeApp();
 
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('en');
+    translate.use(translate.getBrowserLang());
+    
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'My Orders', component: MyOrdersPage, icon: 'basket' },
-      { title: 'Menu', component: MenuPage, icon: 'cafe' },
-      { title: 'Feedback', component: ContactPage, icon: 'mail' },
-      { title: 'About', component: AboutPage, icon: 'map' }
+      { title: 'HOME', component: HomePage, icon: 'home' },
+      { title: 'MY_ORDERS', component: MyOrdersPage, icon: 'basket' },
+      { title: 'MENU', component: MenuPage, icon: 'cafe' },
+      { title: 'FEDDBACK', component: ContactPage, icon: 'mail' },
+      { title: 'ABOUT', component: AboutPage, icon: 'map' }
     ];
 
   }
@@ -47,4 +53,6 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  
 }
