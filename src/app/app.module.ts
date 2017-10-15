@@ -1,3 +1,5 @@
+import { SignupPage } from './../pages/signup/signup';
+import { LoginPage } from './../pages/login/login';
 import { MyOrdersPage } from './../pages/my-orders/my-orders';
 import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
@@ -15,10 +17,22 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBuv86u1bkfMXGIyv1fhMFtjIerT-38BK8",
+  authDomain: "mammamia-1504917068928.firebaseapp.com",
+  databaseURL: "https://mammamia-1504917068928.firebaseio.com",
+  projectId: "mammamia-1504917068928",
+  storageBucket: "mammamia-1504917068928.appspot.com",
+  messagingSenderId: "771953970886"
+};
 
 @NgModule({
   declarations: [
@@ -27,7 +41,9 @@ export function createTranslateLoader(http: Http) {
     ContactPage,
     MenuPage,
     AboutPage,
-    MyOrdersPage
+    MyOrdersPage,
+    LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +64,9 @@ export function createTranslateLoader(http: Http) {
     ContactPage,
     MenuPage,
     AboutPage,
-    MyOrdersPage
+    MyOrdersPage,
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

@@ -1,3 +1,4 @@
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyOrdersPage } from './../pages/my-orders/my-orders';
 import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
@@ -10,6 +11,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { TranslateService } from '@ngx-translate/core';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../pages/login/login';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,7 +25,15 @@ export class MyApp {
   pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen
-        , public translate: TranslateService) {
+        , public translate: TranslateService, private angularAuth: AngularFireAuth) {
+
+    this.angularAuth.authState.subscribe( auth => {
+      if(!auth)
+        this.rootPage = LoginPage;
+      else
+        this.rootPage = HomePage;
+    });
+
     this.initializeApp();
 
     // this language will be used as a fallback when a translation isn't found in the current language
@@ -36,13 +48,12 @@ export class MyApp {
       { title: 'FEDDBACK', component: ContactPage, icon: 'mail' },
       { title: 'ABOUT', component: AboutPage, icon: 'map' }
     ];
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      // Here you can do any higher level native things you might need.      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
