@@ -1,4 +1,3 @@
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyOrdersPage } from './../pages/my-orders/my-orders';
 import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
