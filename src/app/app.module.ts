@@ -1,3 +1,4 @@
+import { ConfirmationEmailPage } from './../pages/confirmation-email/confirmation-email';
 import { SignupPage } from './../pages/signup/signup';
 import { LoginPage } from './../pages/login/login';
 import { MyOrdersPage } from './../pages/my-orders/my-orders';
@@ -44,7 +45,8 @@ var config = {
     AboutPage,
     MyOrdersPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ConfirmationEmailPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ var config = {
     AboutPage,
     MyOrdersPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ConfirmationEmailPage
   ],
   providers: [
     StatusBar,

@@ -46,7 +46,18 @@ export class SignupPage {
     .then(auth => {
       // Could do something with the Auth-Response
       console.log(auth);
-      
+      auth.sendEmailVerification().then(function() {
+        console.log('Verification email sent');
+        
+      }).catch(function(error) {
+        // An error happened.
+        let alert = this.alertController.create({
+          title: 'Error',
+          message: error.message + ',' + error.code,
+          buttons: ['OK']
+        });
+        alert.present(); 
+      });
     })
     .catch(err => {
       //In the future use only the code to get an i18n message to display

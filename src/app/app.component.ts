@@ -1,3 +1,4 @@
+import { ConfirmationEmailPage } from './../pages/confirmation-email/confirmation-email';
 import { MyOrdersPage } from './../pages/my-orders/my-orders';
 import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
@@ -25,12 +26,14 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen
         , public translate: TranslateService, private angularAuth: AngularFireAuth) {
-
     this.angularAuth.authState.subscribe( auth => {
       if(!auth)
         this.rootPage = LoginPage;
       else
-        this.rootPage = HomePage;
+        if(auth.emailVerified)
+          this.rootPage = HomePage;
+        else
+          this.rootPage = ConfirmationEmailPage;
     });
 
     this.initializeApp();
@@ -38,6 +41,7 @@ export class MyApp {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
     translate.use(translate.getBrowserLang());
+    this.angularAuth.auth.languageCode = translate.getBrowserLang();
     
     // used for an example of ngFor and navigation
     this.pages = [
