@@ -16,6 +16,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class SignupPage {
   signupData = {
+    name: '',
     email: '',
     password: '',
     passwordRetyped: ''
@@ -46,6 +47,8 @@ export class SignupPage {
     .then(auth => {
       // Could do something with the Auth-Response
       console.log(auth);
+      auth.updateProfile({displayName: this.signupData.name});
+      
       auth.sendEmailVerification().then(function() {
         console.log('Verification email sent');
         

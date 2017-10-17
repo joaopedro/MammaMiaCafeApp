@@ -4,7 +4,7 @@ import { AboutPage } from './../pages/about/about';
 import { MenuPage } from './../pages/menu/menu';
 import { ContactPage } from './../pages/contact/contact';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -24,14 +24,21 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen
-        , public translate: TranslateService, private angularAuth: AngularFireAuth) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
+          public translate: TranslateService, private angularAuth: AngularFireAuth, 
+          private toastController: ToastController) {
     this.angularAuth.authState.subscribe( auth => {
       if(!auth)
         this.rootPage = LoginPage;
       else
-        if(auth.emailVerified)
+        if(auth.emailVerified){
           this.rootPage = HomePage;
+          let toast = this.toastController.create({
+            message: 'Welcome ' + auth.displayName,
+            duration: 1000
+          });
+          toast.present();
+        }
         else
           this.rootPage = ConfirmationEmailPage;
     });
