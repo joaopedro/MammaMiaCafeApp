@@ -27,21 +27,7 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
           public translate: TranslateService, private angularAuth: AngularFireAuth, 
           private toastController: ToastController) {
-    this.angularAuth.authState.subscribe( auth => {
-      if(!auth)
-        this.rootPage = LoginPage;
-      else
-        if(auth.emailVerified){
-          this.rootPage = HomePage;
-          let toast = this.toastController.create({
-            message: 'Welcome ' + auth.displayName,
-            duration: 1000
-          });
-          toast.present();
-        }
-        else
-          this.rootPage = ConfirmationEmailPage;
-    });
+    this.angularAuth.authState.subscribe( user => this.decideRootPage(user));
 
     this.initializeApp();
 
@@ -60,6 +46,22 @@ export class MyApp {
     ];
   }
 
+  decideRootPage(user){
+    if(!user)
+    this.rootPage = LoginPage;
+    else
+      if(user.emailVerified){
+        this.rootPage = HomePage;
+        let toast = this.toastController.create({
+          message: 'Welcome ' + user.displayName,
+          duration: 1000
+        });
+        toast.present();
+      }
+      else
+        this.rootPage = ConfirmationEmailPage;
+
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

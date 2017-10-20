@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -15,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'confirmation-email.html',
 })
 export class ConfirmationEmailPage {
+  private userConfirmationEmailObserver: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private angularAuth: AngularFireAuth) {
@@ -22,6 +24,7 @@ export class ConfirmationEmailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfirmationEmailPage');
+    this.refreshUser();
   }
 
   resendEmail(){
@@ -37,5 +40,20 @@ export class ConfirmationEmailPage {
       });
       alert.present(); 
     });
+  }
+// 
+  refreshUser(){
+    this.userConfirmationEmailObserver = setInterval(() => {
+      this.angularAuth.auth.currentUser.reload().then(() => {
+        let user = this.angularAuth.auth.currentUser;
+        console.log(user);
+        console.log(user.emailVerified);
+        
+        if(user.emailVerified){
+          this.navCtrl.setRoot(HomePage);
+          clearInterval(this.userConfirmationEmailObserver); 
+        }
+      });
+    }, 5000);
   }
 }
